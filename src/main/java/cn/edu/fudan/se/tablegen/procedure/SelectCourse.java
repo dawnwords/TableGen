@@ -20,7 +20,7 @@ public class SelectCourse implements Procedure {
                 "(SELECT EXISTS (SELECT 1 FROM student WHERE sid=student_id)) AND " +
                 "(SELECT NOT EXISTS (SELECT 1 FROM selection WHERE cid=course_id AND sid=student_id))) THEN\n" +
                 "\t\tSELECT @SelectNum:=COUNT(cid) FROM selection WHERE cid=course_id FOR UPDATE;\n" +
-                "\t\tINSERT INTO selection(cid,sid) SELECT course_id,student_id FROM course WHERE cid=course_id AND @SelectNum < capacity;\n" +
+                "\t\tINSERT INTO selection(cid,sid) SELECT course_id,student_id FROM course USE INDEX(IDX_capacity) WHERE cid=course_id AND @SelectNum < capacity;\n" +
                 "\tEND IF;\n" +
                 "\tCOMMIT;\n" +
                 "END");
