@@ -12,10 +12,10 @@ import cn.edu.fudan.se.tablegen.table.*;
  * Created by Dawnwords on 2015/12/10.
  */
 public class Main {
-    private static final int TEACHER_NUM = 300;
-    private static final int COURSE_NUM = 1000;
-    private static final int COURSE_CAPACITY = 500;
-    private static final int STUDENT_NUM = 7500;
+    private static final int TEACHER_NUM = 3000;
+    private static final int COURSE_NUM = 10000;
+    private static final int COURSE_CAPACITY = 50;
+    private static final int STUDENT_NUM = 75000;
 
     public static void main(String[] args) {
         new DataGen().dbHost("10.131.252.156").dbPort(3306).dbName("course").dbUser("root").dbPass("cloudfdse")
