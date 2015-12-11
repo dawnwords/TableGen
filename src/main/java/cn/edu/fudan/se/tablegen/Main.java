@@ -12,6 +12,6 @@ public class Main {
                 .outputPath("../parameter")
                 .threadNum(100)
                 .iterationNum(7500)
-                .gen(new Random(12123123), 7500, 1000);
+                .gen(new Random(12123123), 75000, 10000);
     }
 }
