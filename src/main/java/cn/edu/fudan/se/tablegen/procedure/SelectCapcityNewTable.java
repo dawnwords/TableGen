@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class SelectCapcityNewTable implements Procedure {
     @Override
     public void addProcedure(Statement statement) throws SQLException {
-        statement.addBatch("DROP PROCEDURE IF EXISTS `selectCapacity`");
+        statement.addBatch("DROP PROCEDURE IF EXISTS `selectCapacityNewTable`");
         statement.addBatch("CREATE PROCEDURE `selectCapacityNewTable`(IN `course_id` INT)\n" +
                 "BEGIN\n" +
                 "\tSELECT cid,capacity FROM capacity WHERE cid = course_id;\n" +

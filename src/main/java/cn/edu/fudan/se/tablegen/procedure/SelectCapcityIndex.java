@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class SelectCapcityIndex implements Procedure {
     @Override
     public void addProcedure(Statement statement) throws SQLException {
-        statement.addBatch("DROP PROCEDURE IF EXISTS `selectCapacity`");
+        statement.addBatch("DROP PROCEDURE IF EXISTS `selectCapacityIndex`");
         statement.addBatch("CREATE PROCEDURE `selectCapacityIndex`(IN `course_id` INT)\n" +
                 "BEGIN\n" +
                 "\tSELECT cid,capacity FROM course USE INDEX(IDX_capacity) WHERE cid = course_id;\n" +
