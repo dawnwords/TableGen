@@ -1,7 +1,5 @@
 package cn.edu.fudan.se.tablegen.core;
 
-import cn.edu.fudan.se.tablegen.core.Random;
-
 import java.io.*;
 
 /**
@@ -34,7 +32,8 @@ public class InputGen {
         for (int i = 0; i < threadNum; i++) {
             PrintWriter out = null;
             try {
-                out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(outputPath + File.separator + i + ".para")));
+                String fileName = outputPath + File.separator + (i + 1) + ".csv";
+                out = new PrintWriter(new OutputStreamWriter(new FileOutputStream(fileName)));
                 for (int j = 0; j < iterationNum; j++) {
                     StringBuilder builder = new StringBuilder();
                     for (int parameter : randomRange) {
