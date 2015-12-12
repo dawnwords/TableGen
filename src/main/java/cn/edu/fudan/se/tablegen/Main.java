@@ -13,8 +13,8 @@ import cn.edu.fudan.se.tablegen.table.Course;
  * Created by Dawnwords on 2015/12/10.
  */
 public class Main {
-    private static final int TEACHER_NUM = 30000;
-    private static final int COURSE_NUM = 100000;
+    private static final int TEACHER_NUM = 300000;
+    private static final int COURSE_NUM = 1000000;
     private static final int COURSE_CAPACITY = 500;
 
     public static void main(String[] args) {
