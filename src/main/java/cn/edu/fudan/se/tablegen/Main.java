@@ -9,9 +9,9 @@ import cn.edu.fudan.se.tablegen.core.Random;
 public class Main {
     public static void main(String[] args) {
         new InputGen()
-                .outputPath("../parameter")
+                .outputPath("../comparison")
                 .threadNum(100)
                 .iterationNum(7500)
-                .gen(new Random(12123123), 75000, 10000);
+                .gen(new Random(12123123), 1000000);
     }
 }
