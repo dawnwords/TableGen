@@ -15,7 +15,7 @@ public class CourseInfo implements Procedure {
         statement.addBatch("DROP PROCEDURE IF EXISTS `courseInfo`");
         statement.addBatch("CREATE PROCEDURE `courseInfo`(IN `course_id` int)\n" +
                 "BEGIN\n" +
-                "\tSELECT course.cid,course.name,course.time,course.location,course.credit,teacher.name,course.capacity,course.remaining" +
+                "\tSELECT course.cid,course.name,course.time,course.location,course.credit,teacher.name,course.remaining" +
                 " FROM course INNER JOIN teacher ON course.tid = teacher.tid" +
                 " WHERE course.cid=course_id;\n" +
                 "END");
