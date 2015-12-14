@@ -16,7 +16,8 @@ public class CourseInfo implements Procedure {
         statement.addBatch("CREATE PROCEDURE `courseInfo`(IN `course_id` int)\n" +
                 "BEGIN\n" +
                 "\tSELECT course.name,course.time,course.location,course.credit,teacher.name,course.capacity,(course.capacity - COUNT(selection.cid)) AS remaining" +
-                " FROM course,teacher,selection WHERE course.tid=teacher.tid AND selection.cid=course.cid AND course.cid=course_id GROUP BY selection.cid;\n" +
+                " FROM course FORCE INDEX(IDX_course),teacher FORCE INDEX(IDX_teacher),selection" +
+                " WHERE course.tid=teacher.tid AND selection.cid=course.cid AND course.cid=course_id GROUP BY selection.cid;\n" +
                 "END");
     }
 }

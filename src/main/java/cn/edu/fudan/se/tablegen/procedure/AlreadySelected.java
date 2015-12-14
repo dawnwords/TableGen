@@ -15,7 +15,8 @@ public class AlreadySelected implements Procedure {
         statement.addBatch("DROP PROCEDURE IF EXISTS `alreadySelected`");
         statement.addBatch("CREATE PROCEDURE `alreadySelected`(IN `student_id` int)\n" +
                 "BEGIN\n" +
-                "\tSELECT course.cid,course.name,course.time,course.location,course.credit,teacher.name FROM course, teacher, selection" +
+                "\tSELECT course.cid,course.name,course.time,course.location,course.credit,teacher.name" +
+                " FROM course FORCE INDEX(IDX_course), teacher FORCE INDEX(IDX_teacher), selection" +
                 " WHERE course.tid=teacher.tid AND course.cid=selection.cid AND selection.sid=student_id LIMIT 10;\n" +
                 "END");
     }
