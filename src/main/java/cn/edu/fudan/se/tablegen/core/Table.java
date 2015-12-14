@@ -30,14 +30,16 @@ public abstract class Table {
         MongoCollection<Document> table = database.getCollection(tableName);
 
         final int batchSize = 1000;
+        List<Document> toInsert = new ArrayList<>();
         for (int i = 0; i < randomNum; i++) {
-            List<Document> toInsert = new ArrayList<>();
             randomElement(random, toInsert, i);
 
             if (i % batchSize == 0) {
                 table.insertMany(toInsert);
+                toInsert.clear();
             }
         }
+        table.insertMany(toInsert);
 
         addIndex(table);
         System.out.printf(": %.2fs used\n", (System.currentTimeMillis() - start) / 1000.0);
