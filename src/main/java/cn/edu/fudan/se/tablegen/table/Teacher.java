@@ -1,13 +1,11 @@
 package cn.edu.fudan.se.tablegen.table;
 
 
-import cn.edu.fudan.se.tablegen.core.Random;
 import cn.edu.fudan.se.tablegen.core.Table;
+import cn.edu.fudan.se.tablegen.core.Random;
+import org.bson.Document;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 /**
  * Created by Dawnwords on 2015/12/5.
@@ -15,28 +13,11 @@ import java.sql.Statement;
 public class Teacher extends Table {
 
     @Override
-    protected void dropTable(Statement statement) throws SQLException {
-        statement.addBatch("DROP TABLE IF EXISTS `teacher`");
-    }
-
-    @Override
-    protected void createTable(Statement statement) throws SQLException {
-        statement.addBatch("CREATE TABLE `teacher` (\n" +
-                "  `tid` int(11) NOT NULL AUTO_INCREMENT,\n" +
-                "  `name` varchar(20) NOT NULL,\n" +
-                "  `intro` varchar(1000) DEFAULT NULL,\n" +
-                "  PRIMARY KEY (`tid`)\n" +
-                ") ENGINE=InnoDB DEFAULT CHARSET=utf8");
-    }
-
-    @Override
-    protected PreparedStatement insertStatement(Connection connection) throws SQLException {
-        return connection.prepareStatement("INSERT INTO teacher(name, intro) VALUES (?,?)");
-    }
-
-    @Override
-    protected void randomElement(Random random, PreparedStatement statement, int i) throws SQLException {
-        statement.setString(1, random.nextRandomName());
-        statement.setString(2, random.nextRandomDescription());
+    protected void randomElement(Random random, List<Document> toInsert, int i) {
+        toInsert.add(new Document()
+                .append("_id", i + 1)
+                .append("name", random.nextRandomName())
+                .append("intro", random.nextRandomDescription())
+        );
     }
 }
