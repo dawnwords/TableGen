@@ -32,7 +32,7 @@ public class Main {
                         new Teacher().randomNum(TEACHER_NUM),
                         new Course().teacherNum(TEACHER_NUM).capacity(COURSE_CAPACITY).randomNum(COURSE_NUM),
                         new Student().randomNum(STUDENT_NUM),
-                        new Selection()/*.studentNum(STUDENT_NUM).courseCapacity(COURSE_CAPACITY).randomNum(COURSE_NUM)*/
+                        new Selection().studentNum(STUDENT_NUM).courseCapacity(COURSE_CAPACITY).randomNum(COURSE_NUM)
                 }).gen();
     }
 }

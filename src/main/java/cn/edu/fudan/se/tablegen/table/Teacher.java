@@ -22,9 +22,9 @@ public class Teacher extends Table {
     @Override
     protected void createTable(Statement statement) throws SQLException {
         statement.addBatch("CREATE TABLE `teacher` (\n" +
-                "  `tid` int(11) NOT NULL AUTO_INCREMENT,\n" +
-                "  `name` varchar(20) NOT NULL,\n" +
-                "  `intro` varchar(1000) DEFAULT NULL,\n" +
+                "  `tid` INT(11) NOT NULL AUTO_INCREMENT,\n" +
+                "  `name` VARCHAR(20) NOT NULL,\n" +
+                "  `intro` VARCHAR(1000) DEFAULT NULL,\n" +
                 "  PRIMARY KEY (`tid`)\n" +
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8");
     }
@@ -32,6 +32,11 @@ public class Teacher extends Table {
     @Override
     protected PreparedStatement insertStatement(Connection connection) throws SQLException {
         return connection.prepareStatement("INSERT INTO teacher(name, intro) VALUES (?,?)");
+    }
+
+    @Override
+    protected void addForeignKeyAndIndex(Statement statement) throws SQLException {
+        statement.addBatch("ALTER TABLE `teacher` ADD INDEX `IDX_teacher` (`tid`, `name`)");
     }
 
     @Override

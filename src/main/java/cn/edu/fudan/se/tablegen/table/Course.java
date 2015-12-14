@@ -49,6 +49,7 @@ public class Course extends Table {
     protected void addForeignKeyAndIndex(Statement statement) throws SQLException {
         statement.addBatch("ALTER TABLE `course` ADD CONSTRAINT `FK_Teacher` FOREIGN KEY (`tid`) REFERENCES `teacher` (`tid`)");
         statement.addBatch("ALTER TABLE `course` ADD INDEX `IDX_capacity` (`cid`, `capacity`)");
+        statement.addBatch("ALTER TABLE `course` ADD INDEX `IDX_course` (`cid`, `name`, `tid`, `time`, `location`, `credit`, `capacity`)");
     }
 
     @Override
